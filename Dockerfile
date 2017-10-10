@@ -11,12 +11,12 @@ ENV GIT_CHECKOUT_HASH="36d8917ffa72e31026d4772ec2331b1684a29f67"
 RUN apk add --no-cache --update \
     git nodejs nodejs-npm
 
+# Set working directory
+WORKDIR /zenbot
+
 # Git clone Zenbot and checkout to the specified hash
 RUN git clone https://github.com/carlos8f/zenbot . && \
     git checkout $GIT_CHECKOUT_HASH
-
-# Set working directory
-WORKDIR /zenbot
 
 # Install Zenbot Node.js dependencies
 RUN npm install
